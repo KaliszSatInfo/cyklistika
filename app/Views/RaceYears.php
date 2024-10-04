@@ -8,7 +8,7 @@ $table = new \CodeIgniter\View\Table();
 
 $table->setHeading(['Název', 'Rok', 'Datum', 'Logo', 'Kategorie', 'Počet etap']);
 
-$cesta_logo = 'cyklistika/img/logos/';
+$cesta_logo = 'img/logos/';
 
 foreach ($raceYear as $row) {
     $endDate = $row->end_date;
