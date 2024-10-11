@@ -36,7 +36,20 @@ class Kontroler extends BaseController
 
 
     public function loadStages($id_race_year){
-        $data['stage'] = $this->Stage->join('parcour_type', 'parcour_type.id = stage.parcour_type', 'inner')->where('id_race_year', $id_race_year)->findAll();
+        $data['stage'] = $this->Stage
+        ->join('parcour_type', 'parcour_type.id = stage.parcour_type', 'inner')
+        ->where('id_race_year', $id_race_year)
+        ->find();
         return view('Stages', $data);
+    }
+
+    public function loadResults($id_stage){
+        $data['result'] = $this->Stage
+        ->select('id_stage, id_rider, result.id, rider.id, first_name, last_name, date_of_birth, photo, weight, height')
+        ->join('result', 'result.id_stage = stage.id', 'inner')
+        ->join('rider', 'rider.id = result.id_rider', 'inner')
+        ->where('id_stage', $id_stage)
+        ->findAll();
+        return view('Results', $data);
     }
 }

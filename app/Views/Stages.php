@@ -6,10 +6,11 @@ $this->section("content");
 
 $table = new \CodeIgniter\View\Table();
 
-$table->setHeading(['Číslo etapy', 'Datum etapy', 'Start etapy', 'Cíl etapy', 'Délka etapy', 'Typ etapy', 'Vertikální převýšení']);
+$table->setHeading(['Číslo etapy', 'Datum etapy', 'Start etapy', 'Cíl etapy', 'Délka etapy', 'Typ etapy', 'Vertikální převýšení', 'Výsledky']);
 
 foreach($stage as $row){
-    $table->addRow($row->number, date('j.n.Y', strtotime($row->date)), $row->departure, $row->arrival, number_format($row->distance, 0, ',', ' ').' km', $row->name, $row->vertical_meters.' m');
+    $table->addRow($row->number, date('j.n.Y', strtotime($row->date)), $row->departure, $row->arrival, number_format($row->distance, 0, ',', ' ').' km', 
+    $row->name, $row->vertical_meters.' m', anchor('Result/'.$row->id, 'Výsledky etapy'));
 }
 
 $template = [
