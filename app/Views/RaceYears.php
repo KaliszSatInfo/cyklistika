@@ -6,7 +6,7 @@ $this->section("content");
 
 $table = new \CodeIgniter\View\Table();
 
-$table->setHeading(['Název', 'Rok', 'Datum', 'Logo', 'Kategorie', 'Počet etap']);
+$table->setHeading(['Název', 'Rok', 'Datum', 'Logo', 'Kategorie', 'Celková délka', 'Počet etap']);
 
 $cesta_logo = 'img/logos/';
 
@@ -28,7 +28,7 @@ foreach ($raceYear as $row) {
         'width' => '15%'
     ];
 
-    $table->addRow($row->real_name, $row->year, $date, img($logo), $row->name, anchor('Stage/'.$row->id_race_year, $row->count));
+    $table->addRow($row->real_name, $row->year, $date, img($logo), $row->name, number_format($row->distance, 0, ',', ' ').' km', anchor('Stage/'.$row->id_race_year, $row->count));
 }
 
 $template = [
