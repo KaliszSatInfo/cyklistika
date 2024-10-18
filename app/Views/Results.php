@@ -14,6 +14,7 @@
             <div class="card m-5">
                 <h4 class="text-center"><?= $counter++ ?></h4>
                 <p><?= 'Jméno: '.$row->first_name.' '.$row->last_name?></p>
+                <p><?= 'Čas: '.$row->time?></p>
                 <p><?= 'Datum narození: '.date('j.n.Y', strtotime($row->date_of_birth))?></p>
                 <p><?= 'Váha: '.$row->weight.' kg'?></p>
                 <p><?= 'Výška: '.$row->height.' cm'?></p>

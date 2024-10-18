@@ -45,7 +45,7 @@ class Kontroler extends BaseController
 
     public function loadResults($id_stage){
         $data['result'] = $this->Stage
-        ->select('id_stage, id_rider, result.id, rider.id, first_name, last_name, date_of_birth, photo, weight, height')
+        ->select('id_stage, id_rider, result.id, rider.id, first_name, last_name, date_of_birth, photo, weight, height, time')
         ->join('result', 'result.id_stage = stage.id', 'inner')
         ->join('rider', 'rider.id = result.id_rider', 'inner')
         ->where('id_stage', $id_stage)
